@@ -1,0 +1,16 @@
+<!-- Improved burst permission correlation ruleset -->
+<group name="android_burst_permission_correlation_rules">
+    <!-- No intermediate grouping rules needed -->
+    
+    <!-- Direct correlation between the original rules -->
+    <rule id="101002" level="16" frequency="2" timeframe="120">
+        <if_sid>100707</if_sid> <!-- Autonomous Gesture rule -->
+        <if_matched_sid>100705</if_matched_sid> <!-- Permission Granted rule -->
+        <same_field>apkHash</same_field> <!-- Ensure the same APK is involved -->
+        <description>Autonomous Burst Permission Detected: Malware appears to be using accessibility service to grant permissions. Apk_Hash: $(apkHash), Device: $(deviceId), Package: $(package)</description>
+        <group>android,security,autonomous_permission,correlation</group>
+        <mitre>
+            <id>T1546.008</id> <!-- Abuse of Accessibility Features -->
+        </mitre>
+    </rule>
+</group>

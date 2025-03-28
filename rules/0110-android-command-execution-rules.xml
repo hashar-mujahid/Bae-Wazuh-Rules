@@ -1,0 +1,22 @@
+<group name="android_command_execution_group">
+  <!-- Rule for Android Command Execution Detection -->
+  <rule id="100708" level="13">
+    <decoded_as>android_command_execution</decoded_as>
+    <description>Command Execution Detected: Device: $(deviceId), Apk Hash: $(apkHash), UID $(uid), Command: $(command) Arguments: $(arguments)</description>
+    <group>android,security,command,privilege_escalation</group>
+    <mitre>
+        <id>T1623</id>
+    </mitre>
+  </rule>
+  
+  <rule id="100709" level="16">
+      <decoded_as>android_command_execution</decoded_as>
+      <if_sid>100708</if_sid>
+      <list field="command" lookup="match_key">etc/lists/dangerous_commands</list>
+      <description>Dangerous Command Execution Detected: Device: $(deviceId), Apk Hash: $(apkHash), UID $(uid), Command: $(command) Arguments: $(arguments)</description>
+      <group>android,file,write,suspicious</group>
+      <mitre>
+        <id>T1623</id>
+      </mitre>
+    </rule>
+</group>

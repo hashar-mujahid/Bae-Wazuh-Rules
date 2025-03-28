@@ -1,0 +1,7 @@
+<decoder name="android_sandbox_evasion_emulation_detection">
+  <parent>android_log_base</parent>
+  <use_own_name>true</use_own_name>
+  <prematch>Operation: Sandbox Evasion Emulation Detection Detected</prematch>
+  <regex type="pcre2">Device:\s+(\S+)\s+Apk_Hash:\s+(\S+)\s+Operation: Sandbox Evasion Emulation Detection Detected\s+(?i)uid\s+(\d+)\s+File\s+Accessed\s+(\/[\w\/.-]+)</regex>
+  <order>deviceId,apkHash,uid,file_accessed</order>
+</decoder>

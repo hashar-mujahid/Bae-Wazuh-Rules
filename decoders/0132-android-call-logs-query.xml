@@ -1,0 +1,8 @@
+<!-- Modify it at your will. -->
+<decoder name="android_call_log_query">
+  <parent>android_log_base</parent>
+  <use_own_name>true</use_own_name>
+  <prematch>Operation: Call log queried Detected</prematch>
+  <regex type="pcre2">Device:\s+(\S+)\s+Apk_Hash:\s+(\S+)\s+Operation:\s+Call log queried Detected by\s+(?i)UID\s+(\d+),\s+Package:\s+(\S+)</regex>
+  <order>deviceId,apkHash,uid,package</order>
+</decoder>

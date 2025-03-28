@@ -1,0 +1,39 @@
+<!-- Modify it at your will. -->
+<group name="network_activity">
+
+      <rule id="100100" level="4">
+        <decoded_as>android_network_activity</decoded_as>
+        <description>Network URL Access Detected: Device: $(deviceId), Apk_Hash: $(apkHash), UID: $(uid), URL: $(url)</description>
+        <group>android_network_url_detected</group>
+        <match>Operation: URL Detected</match>
+        <mitre>
+          <id>T1071</id> <!-- Exfiltration Over C2 Channel -->
+        </mitre>
+      </rule>
+
+    <rule id="100101" level="15">
+        <decoded_as>android_network_activity</decoded_as>
+        <regex type="pcre2">Operation:\s+URL\s+Detected\s+\d+\s+URL\s+https?://\S+\.apk</regex>
+        <description>APK File Download Detected: UID $(uid), URL: $(url)</description>
+        <group>android_network_url_detected,apk_download_detected</group>
+    </rule>
+    
+    <rule id="100102" level="14"> <!-- Adjust the level as needed -->
+        <decoded_as>android_network_activity</decoded_as>
+        <!-- Strict regex to detect only valid numeric IP-based URLs -->
+        <regex type="pcre2">Operation:\s+URL\s+Detected\s+(?i)uid\s+\d+\s+URL\s+https?:\/\/(\b(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])){3}\b)(\/\S*)?</regex>
+        <description>IP-based Network Communication Detected: Device $(deviceId), Apk_Hash: $(apkHash), UID: $(uid), URL: $(url)</description>
+        <group>android_network_ip_communication,android_network_url_detected</group>
+        <mitre>
+            <id>T1071</id> <!-- Application Layer Protocol -->
+        </mitre>
+    </rule>
+    
+
+
+      
+
+
+
+</group>
+<!-- Modify it at your will. -->

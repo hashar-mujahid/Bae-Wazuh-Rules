@@ -1,0 +1,7 @@
+<decoder name="android_dex_class_loading">
+  <parent>android_log_base</parent>
+  <use_own_name>true</use_own_name>
+  <prematch>Operation: DexClassLoading Detected</prematch>
+  <regex type="pcre2">Device:\s+(\S+)\s+Apk_Hash:\s+(\S+)\s+Operation: DexClassLoading Detected\s+(?i)uid\s+(\d+)\s+Path\s+([^\s]+)\/([^\/]+)\.([a-zA-Z0-9]+)</regex>
+  <order>deviceId,apkHash,uid,path,filename,extension</order>
+</decoder>

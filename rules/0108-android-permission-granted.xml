@@ -1,0 +1,14 @@
+<!-- Modify it at your will. -->
+
+<group name="android,security,permission">
+
+<rule id="100705" level="5">
+  <decoded_as>android_permission_granted</decoded_as>
+  <field name="permission">\.+</field>
+  <field name="package">\.+</field>
+  <description>Permission Granted Detected: Device: $(deviceId), Apk Hash: $(apkHash), Package $(package) granted permission $(permission)</description>
+  <group>android_permission_granted</group>
+  <options>no_full_log</options>
+</rule>
+
+</group>

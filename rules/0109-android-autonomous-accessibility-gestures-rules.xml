@@ -1,0 +1,22 @@
+<!-- Modify it at your will. -->
+
+<group name="android-accessibility-touches">
+  <!-- Rule for Android Navigation Buttons Pressed Detection -->
+  <rule id="100706" level="15">
+    <decoded_as>android_navigation_buttons_pressed</decoded_as>
+    <description>Accessibility Permission Abuse - Autunomous Navigation Buttons Pressed Detected: Device: $(deviceId), Apk Hash: $(apkHash), UID $(uid), Action $(action)</description>
+    <group>android_accessibility_gesture</group>
+    <mitre>
+        <id>T1516</id>
+    </mitre>
+  </rule>
+  
+  <rule id="100707" level="15">
+    <decoded_as>android_autonomous_gestures</decoded_as>
+    <description>Accessibility Permission Abuse - Autunomous Gestures Detected: Device: $(deviceId), Apk Hash: $(apkHash), UID $(uid), Action $(action)</description>
+    <group>android_accessibility_gesture</group>
+    <mitre>
+        <id>T1516</id>
+    </mitre>
+  </rule>
+</group>

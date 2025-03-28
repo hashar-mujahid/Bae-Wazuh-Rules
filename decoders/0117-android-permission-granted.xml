@@ -1,0 +1,8 @@
+<!-- Modify it at your will. -->
+<decoder name="android_permission_granted">
+  <parent>android_log_base</parent>
+  <use_own_name>true</use_own_name>
+  <prematch>Operation: Permission Granted Detected</prematch>
+  <regex type="pcre2">Device:\s+(\S+)\s+Apk_Hash:\s+(\S+)\s+Operation:\s+Permission Granted Detected\s+(?i)Uid\s+(\d+)\s+Package\s+(\S+)\s+Permission\s+(\S+)</regex>
+  <order>deviceId,apkHash,uid,package,permission</order>
+</decoder>

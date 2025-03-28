@@ -1,0 +1,7 @@
+<decoder name="android_overlay_detection">
+  <parent>android_log_base</parent>
+  <use_own_name>true</use_own_name>
+  <prematch>Operation: Suspicious Overlay Detected</prematch>
+  <regex type="pcre2">Device:\s+(\S+)\s+Apk_Hash:\s+(\S+)\s+Operation: Suspicious Overlay Detected\s+(?i)uid\s+(\d+)\s+width\s+(-?\d+)\s+height\s+(-?\d+)\s+type\s+(\d+)\s+flags\s+(\d+)</regex>
+  <order>deviceId,apkHash,uid,width,height,type,flags</order>
+</decoder>

@@ -1,0 +1,16 @@
+<!-- Modify it at your will. -->
+<group name="android_component_disabled">
+
+    <rule id="100056" level="7">
+        <decoded_as>android_component_disabled</decoded_as>
+        <group>android_component_disabled</group>
+        <list field="component_name" lookup="not_match_key">etc/lists/legitimate_notification_components-android</list>
+        <description>Application Component disabled detected: Device: $(deviceId), Apk_Hash: $(apkHash), UID: $(uid), Component Name: $(component_name), State: $(state)</description>
+        <match>Operation: Component Disabled Detected</match>
+        <mitre>
+            <id>T1628.001</id> <!-- Android application icon hide -->
+        </mitre>
+    </rule>
+
+</group>
+<!-- Modify it at your will. -->

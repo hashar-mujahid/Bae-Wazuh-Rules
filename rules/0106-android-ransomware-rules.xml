@@ -1,0 +1,75 @@
+<!-- Modify it at your will. -->
+
+<group name="android_ransomware_rules">
+
+
+
+
+
+    <!-- Rule for Android Suspicious Overlay Detection -->
+    <rule id="100401" level="15">
+        <decoded_as>android_overlay_detection</decoded_as>
+        <group>android_overlay_suspicious</group>
+        <description>Suspicious overlay detected on Android log by UID: $(uid), Type: $(type), Device: $(deviceId), Apk_Hash: $(apkHash)</description>
+        <match>Operation: Suspicious Overlay Detected</match>
+         <mitre>
+            <id>T1629.002</id> <!-- Abuse Elevation Control Mechanism: Password Reset -->
+        </mitre>
+    </rule>
+
+    <!-- Rule for Android Wallpaper Apply Operation -->
+    <rule id="100402" level="2">
+        <decoded_as>android_wallpaper_apply</decoded_as>
+        <group>android_wallpaper_apply</group>
+        <description>Wallpaper apply operation detected on Android</description>
+        <match>Operation: Wallpaper Apply Operation Detected</match>
+    </rule>
+
+
+        
+    
+
+    <rule id="100403" level="3">
+      <if_sid>100053</if_sid>
+      <list field="appended_extension" lookup="not_match_key">etc/lists/whitelisted_extensions</list>
+      <description>Suspicious file write operation detected: $(path) First Extension: $(extension), Appended Extension: $(appended_extension)</description>
+      <group>android_file_write_suspicious</group>
+    </rule>
+    
+    <!-- Single exteniosn based Encryption -->
+    <rule id="100404" level="3">
+      <if_sid>100053</if_sid>
+      <list field="extension" lookup="not_match_key">etc/lists/whitelisted_extensions</list>
+      <description>Suspicious file write operation detected: $(path) Extension: $(extension)</description>
+      <group>android_file_write_suspicious</group>
+    </rule>
+    
+    
+    
+    <rule id="100405" level="5">
+        <if_sid>100404, 100403</if_sid>
+        <description>Intermediate alert: Suspicious file write operation detected by UID $(uid) for correlation purposes.</description>
+        <group>ransomware_detection,file_operations,android_file_system_rules</group>
+        <options>no_full_log</options>
+    </rule>
+
+    <rule id="100406" level="16" frequency="8" timeframe="8">
+        <if_matched_sid>100405</if_matched_sid>       <!-- Requires that suspicious write was detected -->
+        <if_sid>100051</if_sid>                       <!-- Requires delete event for the same UID -->
+        <same_field>uid</same_field>                  <!-- Ensures the same UID for both events -->
+        <same_field>filename</same_field>
+        <same_field>apkHash</same_field>
+        <same_field>deviceId</same_field>
+        <description>Ransomware behavior detected: Device: $(deviceId) Apk Hash: $(apkHash). Reason: Sequential file write with unknown extension followed by delete attempt of file: $(filename).$(extension) by the application with UID: $(uid).</description>
+        <group>ransomware_detection,file_operations,correlation</group>
+        <mitre>
+            <id>T1486</id>                            <!-- MITRE ATT&CK ID for Data Encrypted for Impact -->
+            <id>T1485</id>                            <!-- MITRE ATT&CK ID for Data Destruction -->
+        </mitre>
+    </rule>
+
+
+    
+
+
+</group>

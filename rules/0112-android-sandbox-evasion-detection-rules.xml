@@ -1,0 +1,11 @@
+<!-- Modify it at your will. -->
+<group name="android_sandbox_evasion">
+  <rule id="100711" level="10">
+    <decoded_as>android_sandbox_evasion_emulation_detection</decoded_as>
+    <description>Sandbox Evasion Emulation Detected: Device: $(deviceId), Apk Hash: $(apkHash), UID $(uid), File Accessed: $(file_accessed)</description>
+    <group>android,sandbox,evasion,security</group>
+    <mitre>
+        <id>T1633</id>
+    </mitre>
+  </rule>
+</group>

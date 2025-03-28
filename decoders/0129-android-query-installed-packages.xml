@@ -1,0 +1,8 @@
+<!-- Modify it at your will. -->
+<decoder name="android_query_installed_packages">
+  <parent>android_log_base</parent>
+  <use_own_name>true</use_own_name>
+  <prematch>Operation: Query Installed Packages Detected</prematch>
+  <regex type="pcre2">Device:\s+(\S+)\s+Apk_Hash:\s+(\S+)\s+Operation:\s+Query Installed Packages Detected\s+(?i)Uid\s+(\d+)\s+Userid\s+(\d+)</regex>
+  <order>deviceId,apkHash,uid,userId</order>
+</decoder>

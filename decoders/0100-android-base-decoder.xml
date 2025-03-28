@@ -1,0 +1,5 @@
+<decoder name="android_log_base">
+    <prematch>System.out|LibC</prematch>
+    <regex>^(\d{2}-\d{2})\s+(\d{2}:\d{2}:\d{2}\.\d{3})\s+(\d+)\s+(\d+)\s+(\w)\s+(\S+):</regex>
+    <order>date,time,pid,tid,log_level,program</order>
+</decoder>

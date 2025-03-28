@@ -1,0 +1,27 @@
+<group name="android_dexclassloading">
+
+    <!-- Rule for Android Dex Class Loading -->
+    <rule id="100300" level="4">
+        <decoded_as>android_dex_class_loading</decoded_as>
+        <group>android_dex_class_loading</group>
+        <description>Dex class loading operation detected on Android log by UID: $(uid), Path: $(path), Filename: $(filename), Extension: $(extension), Device: $(deviceId), Apk_Hash: $(apkHash)</description>
+        <match>Operation: DexClassLoading Detected</match>
+        <mitre>
+            <id>T1407</id> <!-- Dynamic Code Loading -->
+        </mitre>
+    </rule>
+    
+    <!-- Dex Class Loading Masqueraded File -->
+    <!-- Matches files that have suspicious file extensions (not apk, dex, or jar) during Dex class loading -->
+    <rule id="100301" level="15">
+        <if_sid>100300</if_sid>
+        <decoded_as>android_dex_class_loading</decoded_as>
+        <list field="extension" lookup="not_match_key">etc/lists/dexclassloading_extensions</list>
+        <description>Potential Packer Malware Detected: Suspicious file extension detected for Dex Class Loading. UID: $(uid), Path: $(path), Filename: $(filename), Extension: $(extension), Device: $(deviceId), Apk_Hash: $(apkHash)</description>
+        <group>android_dex_class_loading,android_dex_anomaly,android_malicious_dex_class_loading</group>
+        <mitre>
+            <id>T1407</id> <!-- Dynamic Code Loading -->
+        </mitre>
+    </rule>
+    
+</group>

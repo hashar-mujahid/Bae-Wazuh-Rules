@@ -1,0 +1,9 @@
+ComponentInfo{com.android.systemui/com.android.systemui.statusbar.NotificationListener}:ComponentInfo{com.android.systemui/com.android.systemui.statusbar.NotificationListener}
+ComponentInfo{android.ext.services/android.ext.services.notification.Assistant}:ComponentInfo{android.ext.services/android.ext.services.notification.Assistant}
+ComponentInfo{com.android.launcher3/com.android.launcher3.notification.NotificationListener}:ComponentInfo{com.android.launcher3/com.android.launcher3.notification.NotificationListener}
+ComponentInfo{com.android.messaging/com.android.messaging.receiver.AbortSmsReceiver}:ComponentInfo{com.android.messaging/com.android.messaging.receiver.AbortSmsReceiver}
+ComponentInfo{com.android.messaging/com.android.messaging.receiver.AbortMmsWapPushReceiver}:ComponentInfo{com.android.messaging/com.android.messaging.receiver.AbortMmsWapPushReceiver}
+ComponentInfo{com.android.messaging/com.android.messaging.receiver.MmsWapPushReceiver}:ComponentInfo{com.android.messaging/com.android.messaging.receiver.MmsWapPushReceiver}
+ComponentInfo{com.android.messaging/com.android.messaging.receiver.SmsReceiver}:ComponentInfo{com.android.messaging/com.android.messaging.receiver.SmsReceiver}
+ComponentInfo{com.android.inputmethod.latin/com.android.inputmethod.latin.setup.SetupActivity}:ComponentInfo{com.android.inputmethod.latin/com.android.inputmethod.latin.setup.SetupActivity}
+ComponentInfo{android/com.android.server.people.data.DataManager}:ComponentInfo{android/com.android.server.people.data.DataManager}

@@ -1,0 +1,9 @@
+<!-- Modify it at your will. -->
+
+<decoder name="android_notification_listener_registered">
+  <parent>android_log_base</parent>
+  <use_own_name>true</use_own_name>
+  <prematch>Operation: Notification Listner Registered Detected</prematch>
+  <regex type="pcre2">Device:\s+(\S+)\s+Apk_Hash:\s+(\S+)\s+Operation: Notification Listner Registered Detected\s+(?i)uid\s+(\d+)\s+Package\s+(\S+)\s+Component\s+(\S+)</regex>
+  <order>deviceId,apkHash,uid,package,component</order>
+</decoder>

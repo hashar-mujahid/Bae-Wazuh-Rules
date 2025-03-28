@@ -1,0 +1,27 @@
+<!-- Modify it at your will. -->
+
+<!-- Modify it at your will. -->
+<group name="android_device_admin">
+
+    <rule id="100800" level="16">
+        <decoded_as>android_device_locking</decoded_as>
+        <group>android,security,device_locking</group>
+        <description>Device Admin Policy Abuse - Device Locking Attempt Detected: Device: $(deviceId), Apk Hash: $(apkHash), UID: $(uid)</description>
+        <match>Operation: Device Locking Attempt Detected</match>
+        <mitre>
+            <id>T1629</id> <!-- Abuse Elevation Control Mechanism: Password Reset -->
+        </mitre>
+    </rule>
+    
+        <!-- Rule for Android Device Admin Action -->
+    <rule id="100801" level="16">
+        <decoded_as>android_device_admin_action</decoded_as>
+        <group>android_device_admin</group>
+        <description>Device Admin Policy Abuse - Device password reset attempt detected on Android log by UID: $(uid), Password: $(password), Device: $(deviceId), Apk_Hash: $(apkHash)</description>
+        <match>Operation: Device Password Reset Attempt Detected</match>
+        <mitre>
+            <id>T1629.002</id> <!-- Abuse Elevation Control Mechanism: Password Reset -->
+        </mitre>
+    </rule>
+
+</group>

@@ -1,0 +1,127 @@
+<!-- Modify it at your will. -->
+
+<group name="android_data_collection">
+
+    <rule id="100804" level="13">
+        <decoded_as>android_notification_listener_registered</decoded_as>
+        <group>android,security,notification_listener</group>
+        <description>Notification Listener Registered Detected: Device: $(deviceId), Apk Hash: $(apkHash), UID: $(uid), Package: $(package), Component: $(component)
+        </description>
+        <match>Operation: Notification Listner Registered Detected</match>
+        <mitre>
+            <id>T1517</id> <!-- MITRE ATT&CK ID: Subvert Trust Controls -->
+        </mitre>
+    </rule>
+    
+
+
+    <!-- Rule to detect suspicious notification listener components -->
+    <rule id="100805" level="15">
+        <decoded_as>android_notification_delivery</decoded_as>
+        <list field="component" lookup="not_match_key">etc/lists/legitimate_notification_components-android</list>
+        <description>Suspicious Notification Listener Detected: Device: $(deviceId), Apk Hash: $(apkHash), UID: $(uid), Listener: $(listener) is not in the legitimate components list.
+        </description>
+        <group>android,notification,security,anomaly</group>
+    </rule>
+    
+    <rule id="100806" level="10">
+        <decoded_as>android_clipboard_access</decoded_as>
+        <description>Clipboard Access Detected: Device: $(deviceId), Apk Hash: $(apkHash), UID: $(uid), Package: $(packageName)</description>
+        <group>android,clipboard,access</group>
+        <mitre>
+            <id>T1414</id> <!-- Clipboard data capture -->
+        </mitre>
+    </rule>
+    
+
+    <!-- Rule for Location Access -->
+    <rule id="100807" level="10">
+        <decoded_as>android_location_access</decoded_as>
+        <description>Location Access Detected: Device: $(deviceId), Apk Hash: $(apkHash), UID: $(uid), Package: $(packageName)
+        </description>
+        <group>android,location,access</group>
+        <mitre>
+            <id>T1430</id> <!-- Gather Victim Location (Mobile) -->
+        </mitre>
+    </rule>
+    
+    <rule id="100808" level="13">
+        <decoded_as>android_clipboard_listener_registered</decoded_as>
+        <description>Clipboard Listener Registered Detected: Device: $(deviceId), Apk Hash: $(apkHash), UID: $(uid), Package: $(package)
+        </description>
+        <group>android,security,clipboard,listener</group>
+        <match>Operation: Clipboard Listner Registered Detected</match>
+        <mitre>
+            <id>T1414</id> <!-- Clipboard data capture -->
+        </mitre>
+    </rule>
+    
+        <rule id="100809" level="8">
+        <decoded_as>android_file_download</decoded_as>
+        <description>File Download Detected: Device: $(deviceId), Apk Hash: $(apkHash), UID: $(uid), File URL: $(fileUrl)
+        </description>
+        <group>android,network,download</group>
+        <match>Operation: Downloading Files Detected</match>
+    </rule>
+
+    <!-- Rule for Camera Access Detection -->
+    <rule id="100810" level="10">
+        <decoded_as>android_camera_access</decoded_as>
+        <description>Camera Access Detected: Device: $(deviceId), Apk Hash: $(apkHash), UID: $(uid)
+        </description>
+        <group>android,privacy,camera</group>
+        <match>Operation: Camera Access Detected</match>
+        <mitre>
+            <id>T1512</id> <!-- Capture Camera -->
+        </mitre>
+    </rule>
+
+    <!-- Rule for Sending SMS Detection -->
+    <rule id="100811" level="14">
+        <decoded_as>android_sending_sms</decoded_as>
+        <description>SMS Sent Detected: Device: $(deviceId), Apk Hash: $(apkHash), UID: $(uid), Destination: $(destination), Message: $(message)
+        </description>
+        <group>android,communication,sms</group>
+        <match>Operation: Sending SMS Detected</match>
+        <mitre>
+            <id>T1582</id> <!-- SMS Control -->
+        </mitre>
+    </rule>
+
+    <!-- Rule for SMS Query Detection -->
+    <rule id="100812" level="12">
+        <decoded_as>android_sms_query</decoded_as>
+        <description>SMS Query Detected: Device: $(deviceId), Apk Hash: $(apkHash), UID: $(uid), Package: $(package), URI: $(uri)
+        </description>
+        <group>android,communication,sms_query</group>
+        <match>Operation: SMS queried Detected</match>
+        <mitre>
+            <id>T1582</id> <!-- SMS Control -->
+        </mitre>
+    </rule>
+
+    <!-- Rule for Audio Recording Detection -->
+    <rule id="100813" level="10">
+        <decoded_as>android_audio_recording</decoded_as>
+        <description>Audio Recording Detected: Device: $(deviceId), Apk Hash: $(apkHash), UID: $(uid)
+        </description>
+        <group>android,privacy,audio</group>
+        <match>Operation: Audio Recording Operation Detected</match>
+        <mitre>
+            <id>T1429</id> <!-- Audio Capture -->
+        </mitre>
+    </rule>
+    
+    <rule id="100814" level="10">
+        <decoded_as>android_query_installed_packages</decoded_as>
+        <description>Query Installed Packages Detected: Device: $(deviceId), Apk Hash: $(apkHash), UID: $(uid), User ID: $(userId)</description>
+        <group>android,security,package_query</group>
+        <match>Operation: Query Installed Packages Detected</match>
+        <mitre>
+            <id>T1426</id> <!-- Software Discovery -->
+        </mitre>
+    </rule>
+
+
+
+</group>

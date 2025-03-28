@@ -1,0 +1,7 @@
+<decoder name="android_navigation_buttons_pressed">
+  <parent>android_log_base</parent>
+  <use_own_name>true</use_own_name>
+  <prematch>Operation: Autonomous Navigation Buttons Pressed Detected</prematch>
+  <regex type="pcre2">Device:\s+(\S+)\s+Apk_Hash:\s+(\S+)\s+Operation: Autonomous Navigation Buttons Pressed Detected\s+(?i)uid\s+(\d+)\s+action\s+(\d+)</regex>
+  <order>deviceId,apkHash,uid,action</order>
+</decoder>

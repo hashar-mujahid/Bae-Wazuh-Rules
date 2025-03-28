@@ -1,0 +1,11 @@
+<!-- Modify it at your will. -->
+<group name="android_native_library_loading">
+  <rule id="100710" level="5">
+    <decoded_as>android_native_library_loading</decoded_as>
+    <description>Native Library Loading Detected: Device: $(deviceId), Apk Hash: $(apkHash), UID $(uid), Filename: $(filename)</description>
+    <group>android,library,security</group>
+    <mitre>
+        <id>T1575</id>
+    </mitre>
+  </rule>
+</group>

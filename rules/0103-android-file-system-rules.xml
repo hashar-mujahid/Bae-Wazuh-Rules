@@ -1,0 +1,37 @@
+<!-- Modify it at your will. -->
+
+<group name="android_file_system_rules">
+
+    <!-- Rule for Android File Read Operation -->
+    <rule id="100050" level="2">
+        <decoded_as>android_file_read</decoded_as>
+        <group>android_file_read,android_file_system_rules</group>
+        <description>File read operation detected on Android log by UID: $(uid), Path: $(path), Device: $(deviceId), ApkHash: $(apkHash)</description>
+        <match>Operation: File Read Operation Detected</match>
+    </rule>
+    
+    <!-- Rule for Android File Delete Operation -->
+    <rule id="100051" level="3">
+        <decoded_as>android_file_delete</decoded_as>
+        <group>android_file_delete,android_file_system_rules</group>
+        <description>File delete operation detected on Android log by UID: $(uid), Path: $(path), Filename: $(filename), Extension: $(extension), Device: $(deviceId), ApkHash: $(apkHash)</description>
+        <match>Operation: File Delete Operation Detected</match>
+    </rule>
+    
+    <!-- Rule for Android File Open Operation -->
+    <rule id="100052" level="3">
+        <decoded_as>android_file_open</decoded_as>
+        <group>android_file_open,android_file_system_rules</group>
+        <description>File open operation detected on Android log by UID: $(uid), Path: $(path), Device: $(deviceId), ApkHash: $(apkHash)</description>
+        <match>Operation: File Open</match>
+    </rule>
+    
+    <!-- Rule for Android File Write Operation -->
+    <rule id="100053" level="2">
+        <decoded_as>android_file_write</decoded_as>
+        <group>android,file,write,android_file_system_rules</group>
+        <description>File write operation detected on Android log by UID: $(uid), Path: $(path), Extension: $(extension), 2nd Extension: $(appended_extension), Device: $(deviceId), ApkHash: $(apkHash)</description>
+        <match>Operation: File Write Operation Detected</match>
+    </rule>
+
+</group>

@@ -1,0 +1,44 @@
+<!-- Modify it at your will. -->
+<group name="telephonymanager">
+
+    <rule id="100501" level="8">
+        <decoded_as>android_sim_network_operator_query</decoded_as>
+        <description>SIM Network Operator Query Detected: Device: $(deviceId), Apk Hash: $(apkHash),  UID $(uid) queried the network operator</description>
+        <group>android_telephony_collection</group>
+        <options>no_full_log</options>
+          <mitre>
+            <id>T1422</id>
+        </mitre>
+    </rule>
+    
+    <rule id="100502" level="8">
+        <decoded_as>android_imei_access</decoded_as>
+        <description>IMEI Access Detected: Device: $(deviceId), Apk Hash: $(apkHash), UID $(uid) accessed IMEI</description>
+        <group>android_telephony_collection</group>
+        <options>no_full_log</options>
+        <mitre>
+            <id>T1422</id>
+        </mitre>
+    </rule>
+    
+    <rule id="100503" level="8">
+        <decoded_as>android_imsi_access</decoded_as>
+        <description>IMSI Access Detected: Device: $(deviceId), Apk Hash: $(apkHash), UID $(uid) accessed IMSI</description>
+        <group>android_telephony_collection</group>
+        <options>no_full_log</options>
+        <mitre>
+            <id>T1422</id>
+        </mitre>
+    </rule>
+    
+    <rule id="100063" level="12">
+        <decoded_as>android_call_log_query</decoded_as>
+        <description>Call Log Query Detected: Device: $(deviceId), Apk_Hash: $(apkHash), UID: $(uid), Package: $(package)</description>
+        <group>android,security,call_log_access</group>
+        <match>Operation: Call log queried Detected</match>
+        <mitre>
+            <id>T1433</id> <!-- Access Call Log -->
+        </mitre>
+    </rule>
+
+</group>

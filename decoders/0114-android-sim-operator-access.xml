@@ -1,0 +1,7 @@
+<decoder name="android_sim_network_operator_query">
+  <parent>android_log_base</parent>
+  <use_own_name>true</use_own_name>
+  <prematch>Operation: Sim Network Operator Query Detected</prematch>
+  <regex type="pcre2">Device:\s+(\S+)\s+Apk_Hash:\s+(\S+)\s+Operation: Sim Network Operator Query Detected\s+(?i)uid\s+(\d+)</regex>
+  <order>deviceId,apkHash,uid</order>
+</decoder>

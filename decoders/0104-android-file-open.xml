@@ -1,0 +1,7 @@
+<decoder name="android_file_open">
+  <parent>android_log_base</parent>
+  <use_own_name>true</use_own_name>
+  <prematch>Operation: File Open</prematch>
+  <regex type="pcre2">Device:\s+(\S+)\s+Apk_Hash:\s+(\S+)\s+Operation: File Open\s+Operation Detected(?:\s+by)?\s+(?i)UID\s+(\d+)\s+Path\s+(\S+)</regex>
+  <order>deviceId,apkHash,uid,path</order>
+</decoder>
